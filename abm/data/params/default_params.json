@@ -1,0 +1,19 @@
+{
+    "height":                       60, 
+    "width":                        60, 
+    "incubation_period":            7,
+    "recovery_period":              14,
+    "transmission_rate":            0.05,
+    "mortality_rate":               0.01,
+    "viral_load_probability":       0.01,
+    "wearing_masks":                0.9,
+    "social_distance_limit":        0.9,
+    "natural_immunity":             0.2,
+    "exercise":                     0.15,
+    "preexisting_conditions":       0.8,
+    "minority_restrictions":        15,
+    "adult_restrictions":           60,
+    "scenarios":                    "No Vaccination",
+    "vaccination_implementation":   "After 0 Days",
+    "scale":                        1000
+}
