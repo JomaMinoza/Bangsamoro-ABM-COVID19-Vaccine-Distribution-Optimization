@@ -54,7 +54,7 @@ class DataManager:
 
         infection_age_group = infection_age_group_values(self.data)
 
-        infection_rates = self.input_parameters["INFECTION_RATE"]
+        infection_rates = self.get_updated_data("INFECTION_RATE")
         rates           = []
         
         for index, rate in enumerate(infection_rates):
@@ -69,13 +69,14 @@ class DataManager:
         return infection_rates
 
     def update_mortality_rate(self):
-
+        
         case_fatality_age_group = case_fatality_age_group_values(self.data)
-
-        mortality_rates = self.input_parameters["MORTALITY_RATE"]
+        
+        mortality_rates = self.get_updated_data("MORTALITY_RATE")
         
         for index, mortality_rate in enumerate(mortality_rates):
-            mortality_rates[mortality_rate]['rate'] = case_fatality_age_group[index] 
+            if mortality_rates[mortality_rate]['rate'] == 0:
+                mortality_rates[mortality_rate]['rate'] = case_fatality_age_group[index] 
 
         json_updater(self.parameters_json_file, "MORTALITY_RATE", mortality_rates)
         

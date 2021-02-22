@@ -33,8 +33,8 @@ class GeoSpaceEnvironment:
         self.map                    = self.get_map()
         self.agent_locations        = self.get_geospace().agents
         self.data                   = []
-        self.infection_rates        = {}
-        self.mortality_rates        = {}
+        self.infection_rates        = self.data_manager.get_updated_data("INFECTION_RATE")
+        self.mortality_rates        = self.data_manager.get_updated_data("MORTALITY_RATE")
         self.vaccine_prioritization_weights = vaccine_prioritization_weights
         self.vaccines_available     = vaccines_available
         self.sub_problems           = []
@@ -49,10 +49,7 @@ class GeoSpaceEnvironment:
         
         self.initialized_data()
         self.populate_data(self.get_data_source(), location_filter)
-            
-        self.update_mortality_rates()
-        self.update_infection_rates()
-        
+                    
         self.get_susceptible_matrix()
         self.get_localized_data_collectors()
         self.get_localized_labels_and_summaries()
