@@ -210,7 +210,7 @@ class Person(GeoAgent):
 
     def incubation_process(self):
       if self.time_infected <= self.incubation_period:
-        if self.with_low_immunity() and self.roll_probability(self.infection_rate):
+        if self.roll_probability(self.infection_rate):
           self.infected_process()
       else:
         # returns to Susceptible Status
