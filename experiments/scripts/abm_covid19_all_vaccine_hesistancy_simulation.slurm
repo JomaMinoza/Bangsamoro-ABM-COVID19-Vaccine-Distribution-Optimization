@@ -44,7 +44,7 @@ cd ~/scratch2/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/
 
 pip install -r requirements.txt --user
 
-srun jupyter nbconvert --to notebook --execute --inplace "experiments/notebooks/Sensitivity Analysis on Vaccination with All Prioritizations [25% Vaccine Hesitants].ipynb" --ExecutePreprocessor.timeout=86400
-srun jupyter nbconvert --to notebook --execute --inplace "experiments/notebooks/Sensitivity Analysis on Vaccination with All Prioritizations [50% Vaccine Hesitants].ipynb" --ExecutePreprocessor.timeout=86400
-srun jupyter nbconvert --to notebook --execute --inplace "experiments/notebooks/Sensitivity Analysis on Vaccination with All Prioritizations [75% Vaccine Hesitants].ipynb" --ExecutePreprocessor.timeout=86400
-srun jupyter nbconvert --to notebook --execute --inplace "experiments/notebooks/Sensitivity Analysis on Vaccination with All Prioritizations [100% Vaccine Hesitants].ipynb" --ExecutePreprocessor.timeout=86400
+srun jupyter nbconvert --to notebook --execute --inplace "experiments/notebooks/Sensitivity Analysis on Vaccination with All Prioritizations - 25% Vaccine Hesitants.ipynb" --ExecutePreprocessor.timeout=86400
+srun jupyter nbconvert --to notebook --execute --inplace "experiments/notebooks/Sensitivity Analysis on Vaccination with All Prioritizations - 50% Vaccine Hesitants.ipynb" --ExecutePreprocessor.timeout=86400
+srun jupyter nbconvert --to notebook --execute --inplace "experiments/notebooks/Sensitivity Analysis on Vaccination with All Prioritizations - 75% Vaccine Hesitants.ipynb" --ExecutePreprocessor.timeout=86400
+srun jupyter nbconvert --to notebook --execute --inplace "experiments/notebooks/Sensitivity Analysis on Vaccination with All Prioritizations - 100% Vaccine Hesitants.ipynb" --ExecutePreprocessor.timeout=86400
