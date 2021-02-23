@@ -346,13 +346,13 @@ class GeoSimulationEnvironment(Model):
                 facemask   = True
                             
             if age > self.adult_restrictions:
-                adult_immunity  = round(self.random.normalvariate(self.preexisting_conditions),0.25 * self.preexisting_conditions)
+                adult_immunity  = round(self.random.normalvariate(self.preexisting_conditions,0.25 * self.preexisting_conditions))
                 immunity = self.natural_immunity * self.exercise * (1 - adult_immunity)
                 if immunity < self.immunity_threshold:
                     in_lockdown = True
             
             if age < self.minority_restrictions:
-                young_immunity  = round(self.random.normalvariate(self.natural_immunity), 0.25 * self.natural_immunity)
+                young_immunity  = round(self.random.normalvariate(self.natural_immunity, 0.25 * self.natural_immunity))
                 immunity = young_immunity * self.exercise * (1 - self.preexisting_conditions)                
                 in_lockdown = True
                 
