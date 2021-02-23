@@ -323,8 +323,8 @@ class GeoSimulationEnvironment(Model):
             severity    = Severity.Zero
             viral_load  = ViralLoad.Zero
             facemask    = False
-            immunity    = round(np.random.normalvariate(self.immunity_threshold), 0.25 * self.immunity_threshold)
-            social_distancing = round(np.random.normalvariate(self.self.social_distance_limit),0.25 * self.social_distance_limit) 
+            immunity    = round(self.random.normalvariate(self.immunity_threshold), 0.25 * self.immunity_threshold)
+            social_distancing = round(self.random.normalvariate(self.self.social_distance_limit),0.25 * self.social_distance_limit) 
             in_lockdown = False
             in_quarantine = False         
             vaccine_hesistancy  = bool(np.random.choice(hesitancy, p = [self.vaccine_hesitancy, (1 - self.vaccine_hesitancy)]))
@@ -346,13 +346,13 @@ class GeoSimulationEnvironment(Model):
                 facemask   = True
                             
             if age > self.adult_restrictions:
-                adult_immunity  = round(np.random.normalvariate(self.preexisting_conditions),0.25 * self.preexisting_conditions)
+                adult_immunity  = round(self.random.normalvariate(self.preexisting_conditions),0.25 * self.preexisting_conditions)
                 immunity = self.natural_immunity * self.exercise * (1 - adult_immunity)
                 if immunity < self.immunity_threshold:
                     in_lockdown = True
             
             if age < self.minority_restrictions:
-                young_immunity  = round(np.random.normalvariate(self.natural_immunity), 0.25 * self.natural_immunity)
+                young_immunity  = round(self.random.normalvariate(self.natural_immunity), 0.25 * self.natural_immunity)
                 immunity = young_immunity * self.exercise * (1 - self.preexisting_conditions)                
                 in_lockdown = True
                 
