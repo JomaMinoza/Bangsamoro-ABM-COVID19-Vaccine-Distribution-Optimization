@@ -324,7 +324,7 @@ class GeoSimulationEnvironment(Model):
             viral_load  = ViralLoad.Zero
             facemask    = False
             immunity    = round(self.random.normalvariate(self.immunity_threshold, 0.25 * self.immunity_threshold))
-            social_distancing = round(self.random.normalvariate(self.self.social_distance_limit),0.25 * self.social_distance_limit) 
+            social_distancing = round(self.random.normalvariate(self.self.social_distance_limit, 0.25 * self.social_distance_limit))
             in_lockdown = False
             in_quarantine = False         
             vaccine_hesistancy  = bool(np.random.choice(hesitancy, p = [self.vaccine_hesitancy, (1 - self.vaccine_hesitancy)]))
