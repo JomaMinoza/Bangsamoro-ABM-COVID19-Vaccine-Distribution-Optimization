@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:537dc3af2b19f33a6069ebc1c7add033434e32da7040a49ede06c558f667b5f8
-size 544
+,Susceptible,Exposed,Infected,Deaths,Recovered,Vaccinated
+0,4330,0,6,5,5,0
+1,4330,0,6,5,5,0
+2,4282,48,6,5,5,0
+3,4243,82,11,5,5,0
