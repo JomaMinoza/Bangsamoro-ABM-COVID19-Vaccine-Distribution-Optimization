@@ -99,19 +99,30 @@ class DataManager:
                 "dead":        dead
         }
         
-    def update_vaccine_allocation(self, optimization_results):
+    def update_vaccine_allocation(self, optimization_results, vaccinate_young = True):
     
         location_distribution = pd.DataFrame(optimization_results["optimal_allocation_per_age"])
-        location_distribution.index = ["0-9","10-19","20-29","30-39","40-49","50-59","60-69","70-79","80+"]
+
+        index = ["0-9","10-19","20-29","30-39","40-49","50-59","60-69","70-79","80+"]
+
+        if not vaccinate_young:
+            index.pop(0)
+
+        location_distribution.index = index
                 
         locations_data         = self.input_parameters["LOCATION_DATA"]
         
         for idx, location in enumerate(locations_data):
             allocations = locations_data[idx]["VACCINE_ALLOCATION"]
             for jdx, allocation in enumerate(allocations):
-                key = location_distribution.index[jdx]                
-                locations_data[idx]["VACCINE_ALLOCATION"][allocation]["value"] = location_distribution.at[key, idx]
-                
+                cnt = 0
+                if jdx == 0:
+                    locations_data[idx]["VACCINE_ALLOCATION"][allocation]["value"] = 0
+                else:
+                    key = location_distribution.index[cnt]                
+                    locations_data[idx]["VACCINE_ALLOCATION"][allocation]["value"] = location_distribution.at[key, idx]
+                    cnt += 1
+                    
         json_updater(self.parameters_json_file, "LOCATION_DATA", locations_data)
                 
             

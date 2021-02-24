@@ -55,6 +55,7 @@ class GeoSimulationEnvironment(Model):
         data                    = {},
         vaccination_implementation = 'After 0 Days',
         vaccine_hesitancy       = 0,
+        vaccinate_young         = False,
         health_workers          = False,
         public_admin            = False,
         persons_with_difficulty = False,
@@ -81,6 +82,7 @@ class GeoSimulationEnvironment(Model):
         self.scenarios                          = scenarios
         self.vaccination_implementation         = vaccination_implementation
         self.vaccine_hesitancy                  = vaccine_hesitancy
+        self.vaccinate_young                    = vaccinate_young
         
         self.data                               = data
         self.incubation_period                  = incubation_period
@@ -158,7 +160,7 @@ class GeoSimulationEnvironment(Model):
         self.grid                               = environment.get_geospace()
 
         self.schedule = RandomActivation(self)
-        self.running = True
+        self.running  = True
         
         self.localized_data_collectors          = environment.localized_data_collectors
         self.localized_distribution_collectors  = environment.localized_distribution_collectors
@@ -259,6 +261,8 @@ class GeoSimulationEnvironment(Model):
             infected    = location_data["DATA"]["infected"]    * population / self.environment.scale
             recovered   = location_data["DATA"]["recovered"]   * population / self.environment.scale
             dead        = location_data["DATA"]["dead"]        * population / self.environment.scale
+            
+            print("Initializing Agents for {0}".format(location_data["LOCATION_NAME"]))
                                     
             self.initialized_agents(shape_idx, Status.Susceptible, susceptible)
             self.initialized_agents(shape_idx, Status.Infected, infected)
@@ -453,7 +457,7 @@ class GeoSimulationEnvironment(Model):
             if int(self.day) == implementation_day:
                 self.recalculate_susceptibles()   
                 self.environment.initialize_sub_problems(self.vaccine_prioritizations)
-                self.environment.update_vaccine_allocation()   
+                self.environment.update_vaccine_allocation(self.vaccinate_young)  
 
                 for idx, location_data in enumerate(self.environment.data, start = 1):
                     location    = "loc_" + str(idx)

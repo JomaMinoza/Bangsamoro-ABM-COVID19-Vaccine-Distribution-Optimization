@@ -95,6 +95,7 @@ model_params = {
     "scenarios":                    scenarios,
     "vaccination_implementation":   vaccination_implementation,   
     "vaccine_hesitancy":            vaccine_hesitancy,
+    "vaccinate_young":              vaccinate_young_option,
     "vaccine_prior_lbl":            UserSettableParameter('static_text', value = "Vaccine Prioritization"),
     "person_health_social_work":    person_health_social_work_option,
     "person_prof_tech":             person_prof_tech_option,

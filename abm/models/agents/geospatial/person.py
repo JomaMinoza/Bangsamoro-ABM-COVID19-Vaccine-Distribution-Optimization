@@ -73,7 +73,7 @@ class Person(GeoAgent):
       elif (self.age >= 50) and (self.age <= 59):
         self.age_group = AgeGroup.A50to59
       elif (self.age >= 60) and (self.age <= 69):
-        self.age_group = AgeGroup.A50to59
+        self.age_group = AgeGroup.A60to69
       elif (self.age >= 70) and (self.age <= 79):
         self.age_group = AgeGroup.A70to79
       elif (self.age >= 80):

@@ -77,17 +77,28 @@ class GeoSpaceEnvironment:
             map_width = width
         )
     
-    def get_susceptible_matrix(self):
+    def get_susceptible_matrix(self, vaccinate_young = True):
         for idx, agent in enumerate(self.data):
-            loc = np.empty(9, dtype=float)        
+            age_group = 8
+            if vaccinate_young:
+                age_group += 1
+                
+            loc = np.empty(age_group, dtype=float)        
             susceptibles = self.data[idx]["SUSCEPTIBLE_AGENTS"]
+            cnt = 0
             for i, susceptible in enumerate(susceptibles):
-                loc[i] = self.data[idx]["SUSCEPTIBLE_AGENTS"][susceptible]["value"]
+                if not (i == 0 and vaccinate_young == False):
+                    loc[cnt] = self.data[idx]["SUSCEPTIBLE_AGENTS"][susceptible]["value"]
+                    cnt += 1
             
             self.susceptible_matrix = np.append(self.susceptible_matrix, np.array([loc]), axis=0) 
                     
-    def reset_susceptible_matrix(self):
-        self.susceptible_matrix = np.empty((0, 9))
+    def reset_susceptible_matrix(self, vaccinate_young = True):
+        age_group = 8
+        if vaccinate_young:
+            age_group += 1
+        
+        self.susceptible_matrix = np.empty((0, age_group))
                 
     def initialized_data(self):
         print("Initializing the data ...")
@@ -213,11 +224,11 @@ class GeoSpaceEnvironment:
         self.data[agent]["DATA"] = agent_data
         return True
     
-    def update_data(self):
+    def update_data(self, vaccinate_young = True):
         json_updater(self.data_manager.parameters_json_file, "LOCATION_DATA", self.data)
-        self.reset_susceptible_matrix()
-        self.get_susceptible_matrix()
-        self.initialize_vaccination_scheme()
+        self.reset_susceptible_matrix(vaccinate_young)
+        self.get_susceptible_matrix(vaccinate_young)
+        self.initialize_vaccination_scheme(vaccinate_young)
         
     def get_localized_data_collector(self, location):
         return DataCollector(
@@ -302,7 +313,10 @@ class GeoSpaceEnvironment:
                 self.sub_problems.append(self.vaccine_prioritization_weights[weights])
         
     
-    def initialize_vaccination_scheme(self):
+    def initialize_vaccination_scheme(self, vaccinate_young = True):
+        self.reset_susceptible_matrix(vaccinate_young)
+        self.get_susceptible_matrix(vaccinate_young)        
+        
         susceptible_population = np.matrix(self.susceptible_matrix).T
         
         available_vaccines     = self.vaccines_available
@@ -313,9 +327,9 @@ class GeoSpaceEnvironment:
                 
         return result_json
     
-    def update_vaccine_allocation(self):
-        optimization_results = self.initialize_vaccination_scheme()        
-        self.data_manager.update_vaccine_allocation(optimization_results)
+    def update_vaccine_allocation(self, vaccinate_young = True):
+        optimization_results = self.initialize_vaccination_scheme(vaccinate_young)        
+        self.data_manager.update_vaccine_allocation(optimization_results, vaccinate_young)
         self.data    = self.data_manager.get_updated_data("LOCATION_DATA")
     
     def get_summary_plots(self):

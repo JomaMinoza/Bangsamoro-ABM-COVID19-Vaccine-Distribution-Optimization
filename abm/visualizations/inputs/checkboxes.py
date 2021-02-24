@@ -23,3 +23,6 @@ economics_marine_fisheries_option       = UserSettableParameter('checkbox', 'Mar
 economics_volume_fisheries_option       = UserSettableParameter('checkbox', 'Volume of Fisheries Production', value = True)
 economics_livestock_inventory_option    = UserSettableParameter('checkbox', 'Livestock Inventory', value = True)
 economics_volume_corn_option            = UserSettableParameter('checkbox', 'Volume of Corn Production', value = True)
+
+
+vaccinate_young_option                  = UserSettableParameter('checkbox', 'Allow Vaccination for Ages 0-9?', value = False)
