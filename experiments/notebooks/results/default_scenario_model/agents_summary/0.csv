@@ -1,4 +1,3 @@
-,Susceptible,Exposed,Infected,Deaths,Recovered,Vaccinated
-0,3266,0,6,5,5,1064
-1,3266,0,6,5,5,1064
-2,3215,51,6,5,5,1064
+version https://git-lfs.github.com/spec/v1
+oid sha256:2d4e33085b1f7dd5c5877c25a74396af410d61d6282345c61f527c93463bd091
+size 5550

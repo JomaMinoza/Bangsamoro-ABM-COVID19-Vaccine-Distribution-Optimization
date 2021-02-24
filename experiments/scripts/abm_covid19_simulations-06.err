@@ -1,0 +1,26 @@
+>> anaconda-3-5.3.1 has been loaded.
+>> python-3.8.2 has been loaded.
+>> gcc-8.4.0 has been loaded.
+>> openmpi-4.0.3_gcc-8.4.0 has been loaded.
+>> cuda-9.0_cudnn-7.0.5 has been loaded.
+>> mpich-3.3.2 has been loaded.
+>> curl-7.69.1 has been loaded.
+>> mpich-3.3.2 has been loaded.
+>> hdf5-1.12.0 has been loaded.
+>> netcdf-4.7.3 has been loaded.
+>> libpng-1.6.37 has been loaded.
+>> openmpi-4.0.2 has been loaded.
+>> gcc-8.4.0 has been loaded.
+>> scilab-6.1.0 has been loaded.
+>> curl-7.69.1 has been loaded.
+>> mpich-3.3.2 has been loaded.
+>> hdf5-1.12.0 has been loaded.
+>> curl-7.69.1 has been loaded.
+>> mpich-3.3.2 has been loaded.
+>> hdf5-1.12.0 has been loaded.
+>> netcdf-4.7.3 has been loaded.
+>> netcdf-fortran-4.5.2 has been loaded.
+>> make-4.3 has been loaded.
+[NbConvertApp] Converting notebook experiments/notebooks/Sensitivity Analysis on Vaccination with All Prioritizations.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python3
+[NbConvertApp] Writing 276409 bytes to experiments/notebooks/Sensitivity Analysis on Vaccination with All Prioritizations.ipynb
