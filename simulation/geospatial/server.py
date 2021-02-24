@@ -60,7 +60,7 @@ vaccine_prioritization_weights = {
     "economics_volume_corn":            [0.00009, 0.33832, 0.65840, 0.00129, 0.00189]
 }
 
-performance_factor       = 50
+performance_factor       = 5
 scale                    = 1000 * performance_factor  
 vaccines_available       = 5000 / performance_factor # times scale (actual number for vaccine doses) 
 
@@ -85,6 +85,8 @@ components = [
 for location in range(len(locations)):
     components.append(environment.localized_labels[location])
     components.append(environment.localized_summaries[location])
+    components.append(environment.localized_distribution_labels[location])
+    components.append(environment.localized_distribution_summaries[location])
 
 
 

@@ -164,7 +164,6 @@ class Person(GeoAgent):
             self.recovery_period    = self.get_recovery_time()
             self.incubation_period  = self.get_incubation_time()
 
-
     def set_infection_rate(self):
       infection_rates = self.model.environment.infection_rates
       for infection_rate in infection_rates:
@@ -229,7 +228,7 @@ class Person(GeoAgent):
           self.set_recovered()
       
     def get_recovery_time(self):
-        return int(self.random.normalvariate(self.model.recovery_period, 7))
+        return int(self.random.normalvariate(self.model.recovery_period, 3))
 
     def get_incubation_time(self):
         return int(self.random.normalvariate(self.model.incubation_period, 3))

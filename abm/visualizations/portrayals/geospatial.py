@@ -12,31 +12,31 @@ def agent_portrayal(agent):
     
     if isinstance(agent, Person):
         portrayal = {
-            "radius": "1",
-            "Shape": "Circle", 
-            "Age": int(agent.age),
-            "Viral Load": agent.viral_load.name,
-            "Severity": agent.severity.name,
-            "Status": agent.status.name,
-            "Wearing Masks": agent.facemask,
-            "Physical Distance": agent.distance,
-            "Immunity": agent.immunity,
-            "In Quarantine Facility/Hospital": agent.in_quarantine,
-            "In Lockdown": agent.in_lockdown,
-            "Vaccine Hesistancy": agent.vaccine_hesitant
+            "radius":                           "1",
+            "Shape":                            "Circle", 
+            "Age":                              int(agent.age),
+            "Viral Load":                       agent.viral_load.name,
+            "Severity":                         agent.severity.name,
+            "Status":                           agent.status.name,
+            "Wearing Masks":                    agent.facemask,
+            "Physical Distance":                agent.distance,
+            "Immunity":                         agent.immunity,
+            "In Quarantine":                    agent.in_quarantine,
+            "In Lockdown":                      agent.in_lockdown,
+            "Vaccine Hesistancy":               agent.vaccine_hesitant,
+            "Time Infected":                    agent.time_infected,
+            "Recovery Time":                    agent.recovery_period,
+            "Incubation Time":                  agent.incubation_period
         }
 
-        portrayal["Time Infected"]   = agent.time_infected
         if agent.is_susceptible():
             if agent.facemask:
                 portrayal["color"] = "White"
             else:
-                portrayal["color"] = "Gray"
+                portrayal["color"] = "Brown"
                 
         elif agent.is_infected():
-            if agent.viral_load == ViralLoad.High:
-                portrayal["color"] = "Green"
-            elif agent.severity == Severity.Exposed:
+            if agent.severity == Severity.Exposed:
                 portrayal["color"] = "Orange"
             else:
                 portrayal["color"] = "Red"

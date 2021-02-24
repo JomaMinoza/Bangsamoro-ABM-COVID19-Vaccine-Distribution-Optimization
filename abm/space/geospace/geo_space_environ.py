@@ -3,17 +3,21 @@ from abm.visualizations.modules.MapModule import MapModule
 
 from mesa.datacollection import DataCollector
 
+from abm.models.enum.age_group import AgeGroup
+
 from abm.utils.collectors.geospatial.total_susceptible import get_localized_susceptible
 from abm.utils.collectors.geospatial.total_exposed import get_localized_exposed
 from abm.utils.collectors.geospatial.total_infected import get_localized_infected
 from abm.utils.collectors.geospatial.total_deaths import get_localized_death
 from abm.utils.collectors.geospatial.total_recovered import get_localized_recovered
 from abm.utils.collectors.geospatial.total_vaccinated import get_localized_vaccinated
+from abm.utils.collectors.geospatial.total_vaccinated_age_group import get_localized_vaccine_distribution
 
 from abm.utils.modules.optimization.vaccine_distribution_optimization import vaccine_distribution_optimization
 from abm.utils.modules.json_updater import json_updater
 
 from abm.visualizations.charts.summary import SummaryChartModule
+from abm.visualizations.charts.distribution import DistributionChartModule
 from abm.visualizations.elements.label import Label
 from abm.visualizations.portrayals.geospatial import agent_portrayal
 
@@ -43,15 +47,19 @@ class GeoSpaceEnvironment:
         self.population_distribution = {}
         self.susceptible_matrix     = np.empty((0, 9))
         
-        self.localized_data_collectors =  []
-        self.localized_summaries       =  []
-        self.localized_labels          =  []
+        self.localized_data_collectors          =  []
+        self.localized_distribution_collectors  =  []
+        self.localized_summaries                =  []
+        self.localized_labels                   =  []
+        self.localized_distribution_summaries   =  []
+        self.localized_distribution_labels      =  []
         
         self.initialized_data()
         self.populate_data(self.get_data_source(), location_filter)
                     
         self.get_susceptible_matrix()
         self.get_localized_data_collectors()
+        self.get_localized_distribution_collectors()
         self.get_localized_labels_and_summaries()
             
     def get_geospace(self):
@@ -221,11 +229,30 @@ class GeoSpaceEnvironment:
                 "Recovered":    get_localized_recovered(location),
                 "Vaccinated":   get_localized_vaccinated(location)
             })
+
+    def get_localized_distribution_collector(self, location):
+        return DataCollector(
+             model_reporters = {
+                "0 - 9":            get_localized_vaccine_distribution(location, AgeGroup.A00to09),
+                "10 - 19":          get_localized_vaccine_distribution(location, AgeGroup.A10to19),
+                "20 - 29":          get_localized_vaccine_distribution(location, AgeGroup.A20to29),
+                "30 - 39":          get_localized_vaccine_distribution(location, AgeGroup.A30to39),
+                "40 - 49":          get_localized_vaccine_distribution(location, AgeGroup.A40to49),
+                "50 - 59":          get_localized_vaccine_distribution(location, AgeGroup.A50to59),
+                "60 - 69":          get_localized_vaccine_distribution(location, AgeGroup.A60to69),
+                "70 - 79":          get_localized_vaccine_distribution(location, AgeGroup.A70to79),
+                "80 and above":     get_localized_vaccine_distribution(location, AgeGroup.A80toXX)              
+            })
         
     def get_localized_data_collectors(self):
         for shape_idx, agent in enumerate(self.agent_locations, start = 1):
             location = "loc_" + str(shape_idx)
             self.localized_data_collectors.append(self.get_localized_data_collector(location))
+
+    def get_localized_distribution_collectors(self):
+        for shape_idx, agent in enumerate(self.agent_locations, start = 1):
+            location = "loc_" + str(shape_idx)
+            self.localized_distribution_collectors.append(self.get_localized_distribution_collector(location))
 
     def get_localized_labels_and_summaries(self):
         for idx, agent in enumerate(self.agent_locations, start = 1):
@@ -240,12 +267,22 @@ class GeoSpaceEnvironment:
             }                
             
             self.localized_labels.append(Label(label = repr(agent), content = summary_content))
+            
             self.localized_summaries.append(SummaryChartModule(
                 canvas_width    = 900, 
                 canvas_height   = 420, 
                 data_collector  = "localized_data_collectors", 
                 geospatial      = True, 
                 location_index  = idx - 1))
+                        
+            self.localized_distribution_summaries.append(DistributionChartModule(
+                canvas_width    = 825, 
+                canvas_height   = 360, 
+                data_collector  = "localized_distribution_collectors", 
+                geospatial      = True, 
+                location_index  = idx - 1))
+
+            self.localized_distribution_labels.append(Label(label = "Vaccine Allocation for {0}".format(repr(agent))))
             
     def recalculate_susceptible_agents(self, agent, environment_agents):
         self.data[agent]["SUSCEPTIBLE_AGENTS"] = environment_agents
@@ -267,6 +304,7 @@ class GeoSpaceEnvironment:
     
     def initialize_vaccination_scheme(self):
         susceptible_population = np.matrix(self.susceptible_matrix).T
+        
         available_vaccines     = self.vaccines_available
         sub_problems           = self.sub_problems
         

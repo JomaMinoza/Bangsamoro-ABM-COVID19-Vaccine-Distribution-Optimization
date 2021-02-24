@@ -161,6 +161,7 @@ class GeoSimulationEnvironment(Model):
         self.running = True
         
         self.localized_data_collectors          = environment.localized_data_collectors
+        self.localized_distribution_collectors  = environment.localized_distribution_collectors
 
         self.summary_data_collector = DataCollector(
             model_reporters = {
@@ -316,10 +317,9 @@ class GeoSimulationEnvironment(Model):
         
         hesitancy = [True, False]
         
-        
         for i in range(int(np.ceil(population))):            
             pos_x, pos_y = self.grid.random_position(location)
-            age         = np.random.beta(3.3, 6.1)*100
+            age         = int(np.random.choice(self.randomized_age(), p = self.environment.data_manager.age_distributions_percentages))
             severity    = Severity.Zero
             viral_load  = ViralLoad.Zero
             facemask    = False
@@ -380,6 +380,14 @@ class GeoSimulationEnvironment(Model):
 
     def roll_probability(self, threshold):
         return np.random.uniform(0.0, 1.0) < threshold
+    
+    def randomized_age(self):        
+        rand_ages = []
+        for age in range(9):
+            rand_ages.append(np.random.randint(10 * age, 10 * age + 9))
+            
+        return rand_ages
+
     
     def get_vaccination_day(self):
         if self.vaccination_implementation == 'After 0 Days':
@@ -469,6 +477,9 @@ class GeoSimulationEnvironment(Model):
     def update_data(self):
         for localized_data_collector in self.localized_data_collectors:
             localized_data_collector.collect(self)
+        
+        for localized_distribution_collector in self.localized_distribution_collectors:
+            localized_distribution_collector.collect(self)
             
         self.summary_data_collector.collect(self)
         self.agents_exposed_collector.collect(self)

@@ -125,7 +125,15 @@ var BarChartModule = function(fields, canvas_width, canvas_height, sorting, sort
                     .attr("height", function(d) { return Math.abs(y(d.value) - y(0)); })
                 .append("title")
                     .text(function (d) { return d.value; })
-
+                .on("mousemove", function(d){
+                        tooltip
+                          .style("left", d3.event.pageX - 50 + "px")
+                          .style("top", d3.event.pageY - 70 + "px")
+                          .style("display", "inline-block")
+                          .html((d.area) + "<br>" + (d.key) + ": " (d.value));
+                    })
+                .on("mouseout", function(d){ tooltip.style("display", "none");});
+                    
         //Update chart
         chart
             .selectAll("g")
@@ -140,6 +148,14 @@ var BarChartModule = function(fields, canvas_width, canvas_height, sorting, sort
             .attr("height", function(d) { return Math.abs(y(d.value) - y(0)); })
             .select("title")
                 .text(function (d) { return d.value; })
+            .on("mousemove", function(d){
+                    tooltip
+                        .style("left", d3.event.pageX - 50 + "px")
+                        .style("top", d3.event.pageY - 70 + "px")
+                        .style("display", "inline-block")
+                        .html((d.area) + "<br>" + (d.key) + ": " (d.value));
+                })
+            .on("mouseout", function(d){ tooltip.style("display", "none");});
 
 
     }

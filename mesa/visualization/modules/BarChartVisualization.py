@@ -39,6 +39,8 @@ class BarChartModule(VisualizationElement):
         canvas_height=400,
         canvas_width=800,
         data_collector_name="datacollector",
+        geospatial     = False,
+        location_index = 0        
     ):
         """
         Create a new bar chart visualization.
@@ -62,6 +64,8 @@ class BarChartModule(VisualizationElement):
         self.canvas_height = canvas_height
         self.canvas_width = canvas_width
         self.data_collector_name = data_collector_name
+        self.geospatial          = geospatial
+        self.location_index      = location_index
 
         fields_json = json.dumps(self.fields)
         new_element = "new BarChartModule({}, {}, {}, '{}', '{}')"
@@ -72,8 +76,11 @@ class BarChartModule(VisualizationElement):
 
     def render(self, model):
         current_values = []
-        data_collector = getattr(model, self.data_collector_name)
-
+        if self.geospatial:
+            data_collector = getattr(model, self.data_collector_name)[self.location_index]
+        else:
+            data_collector = getattr(model, self.data_collector_name)
+                    
         if self.scope == "agent":
             df = data_collector.get_agent_vars_dataframe().astype("float")
             latest_step = df.index.levels[0][-1]

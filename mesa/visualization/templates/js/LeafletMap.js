@@ -36,7 +36,25 @@ var MapModule = function (view, zoom, map_width, map_height) {
 
 function PopUpProperties(feature, layer) {
   var popupContent = '<table>'
-  var propertiesAllowed = ["unique_id", "ISO", "ID_1", "NAME_1", "TYPE_1", "ENGTYPE_1", "REGION", "Age","Status", "Wearing Masks", "Physical Distance", "In Quarantine Facility/Hospital", "Immunity", "In Lockdown"]
+  var propertiesAllowed = [ "unique_id", 
+                            "ISO", 
+                            "ID_1", 
+                            "NAME_1", 
+                            "TYPE_1", 
+                            "ENGTYPE_1", 
+                            "REGION", 
+                            "Age",
+                            "Status", 
+                            "Wearing Masks", 
+                            "Physical Distance", 
+                            "In Quarantine Facility/Hospital", 
+                            "Immunity", 
+                            "In Lockdown",
+                            "Vaccine Hesistancy",
+                            "Time Infected",
+                            "Recovery Time",
+                            "Incubation Time"
+                          ]
   if (feature.properties) {
     for (var p in feature.properties) {
       if(propertiesAllowed.includes(p)){

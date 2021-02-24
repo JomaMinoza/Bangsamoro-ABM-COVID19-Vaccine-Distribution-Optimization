@@ -23,6 +23,8 @@ class DataManager:
         self.input_parameters       = self.reload_data()
         self.age_distributions      = age_distributions
         
+        self.age_distributions_percentages = np.array(self.age_distributions) / np.sum(self.age_distributions)
+        
         if not os.path.isfile(csv_file):
             extract_data_drop_file()
             
