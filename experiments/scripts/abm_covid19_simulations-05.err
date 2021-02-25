@@ -22,5 +22,15 @@
 >> netcdf-fortran-4.5.2 has been loaded.
 >> make-4.3 has been loaded.
 [NbConvertApp] Converting notebook experiments/notebooks/Sensitivity Analysis on Vaccination with Social Prioritization.ipynb to notebook
+[IPKernelApp] ERROR | Failed to create history session in /home/joma.minoza/.ipython/profile_default/history.sqlite. History will not be saved.
+Traceback (most recent call last):
+  File "/home/joma.minoza/.local/lib/python3.8/site-packages/IPython/core/history.py", line 543, in __init__
+    self.new_session()
+  File "</home/joma.minoza/.local/lib/python3.8/site-packages/decorator.py:decorator-gen-22>", line 2, in new_session
+  File "/home/joma.minoza/.local/lib/python3.8/site-packages/IPython/core/history.py", line 58, in needs_sqlite
+    return f(self, *a, **kw)
+  File "/home/joma.minoza/.local/lib/python3.8/site-packages/IPython/core/history.py", line 568, in new_session
+    cur = conn.execute("""INSERT INTO sessions VALUES (NULL, ?, NULL,
+sqlite3.OperationalError: disk I/O error
 [NbConvertApp] Executing notebook with kernel: python3
-[NbConvertApp] Writing 276367 bytes to experiments/notebooks/Sensitivity Analysis on Vaccination with Social Prioritization.ipynb
+[NbConvertApp] Writing 287225 bytes to experiments/notebooks/Sensitivity Analysis on Vaccination with Social Prioritization.ipynb
