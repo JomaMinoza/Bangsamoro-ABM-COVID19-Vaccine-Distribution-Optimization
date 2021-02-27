@@ -218,7 +218,6 @@ class GeoSpaceEnvironment:
         json_updater(self.data_manager.parameters_json_file, "LOCATION_DATA", self.data)
 
     def populate_raw_data(self, agent, filter_field, filter_value):
-        agent_data  = self.data[agent]["DATA"]
         population  = self.data[agent]["POPULATION"]
         agent_data = self.data_manager.update_location_based_parameters(population, filter_field, filter_value)
         self.data[agent]["DATA"] = agent_data

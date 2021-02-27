@@ -60,7 +60,7 @@ vaccine_prioritization_weights = {
     "economics_volume_corn":            [0.00009, 0.33832, 0.65840, 0.00129, 0.00189]
 }
 
-performance_factor       = 5
+performance_factor       = 50
 scale                    = 1000 * performance_factor  
 vaccines_available       = 5000 / performance_factor # times scale (actual number for vaccine doses) 
 
