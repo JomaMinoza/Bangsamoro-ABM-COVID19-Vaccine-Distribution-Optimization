@@ -163,7 +163,7 @@ class Person(GeoAgent):
             self.time_infected    = 0
             self.recovery_period    = self.get_recovery_time()
             self.incubation_period  = self.get_incubation_time()
-
+            
     def set_infection_rate(self):
       infection_rates = self.model.environment.infection_rates
       for infection_rate in infection_rates:
@@ -208,20 +208,20 @@ class Person(GeoAgent):
             self.removal_process()
 
     def incubation_process(self):
-      if self.time_infected <= self.incubation_period:
-        if self.roll_probability(self.infection_rate):
+      if self.time_infected < self.incubation_period:
           self.infected_process()
       else:
         # returns to Susceptible Status
         self.status = Status.Susceptible
       
     def infected_process(self):
-      # Set to Infected Status under Quarantine
-      self.in_quarantine = True
-      self.severity = Severity.Mild
+      if self.roll_probability(self.infection_rate):
+        # Set to Infected Status under Quarantine
+        self.in_quarantine = True
+        self.severity = Severity.Mild
                           
     def removal_process(self):
-      if self.time_infected < self.get_recovery_time():
+      if self.time_infected < self.recovery_period:
           if self.roll_probability(self.mortality_rate):
               self.set_dead()
       else: 
