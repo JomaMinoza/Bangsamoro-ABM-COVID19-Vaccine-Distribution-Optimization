@@ -52,8 +52,6 @@ function PopUpProperties(feature, layer) {
                             "In Lockdown",
                             "Vaccine Hesistancy",
                             "Time Infected",
-                            "Recovery Time",
-                            "Incubation Time"
                           ]
   if (feature.properties) {
     for (var p in feature.properties) {
