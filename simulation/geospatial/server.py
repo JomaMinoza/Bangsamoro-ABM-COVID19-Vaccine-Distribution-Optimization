@@ -1,6 +1,8 @@
 from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.UserParam import UserSettableParameter
 
+from abm.visualizations.elements.label import Label
+
 from abm.visualizations.elements.total_cases import TotalCases
 from abm.visualizations.elements.active_cases import ActiveCases
 from abm.visualizations.elements.recovered import Recovered
@@ -85,9 +87,13 @@ components = [
 for location in range(len(locations)):
     components.append(environment.localized_labels[location])
     components.append(environment.localized_summaries[location])
+    
+components.append(Label("Vaccine Distribution for BARMM Provinces", font = 24))
+
+for location in range(len(locations)):
     components.append(environment.localized_distribution_labels[location])
     components.append(environment.localized_distribution_summaries[location])
-
+    
 
 
 model_params = {
