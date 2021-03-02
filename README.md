@@ -12,6 +12,12 @@ In this case study, simulations for different vaccination scenarios for the Bang
 
 [Sample Implementation of Solution: https://barmm-abm-covid19-vaccination.herokuapp.com](https://barmm-abm-covid19-vaccination.herokuapp.com)
 
+### To run the model, type
+
+```
+> python main.py
+```
+
 
 For more details of the model, please see the following preprints:
 
@@ -35,19 +41,24 @@ For more details of the model, please see the following preprints:
 
 [Slurm Scripts for High-Performance Computing (HPC) cluster ](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/tree/main/experiments/scripts)
 
-[Summarized Results](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/scripts/summarize_results.py)
+[Script for Summarized Results](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/scripts/summarize_results.py)
 
-[Summarized Sensitivity Analysis](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/scripts/summarize_results.py)
+[Script for Summarized Sensitivity Analysis](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/scripts/summarize_results.py)
 
 ### Sensitivity Analysis
 
-![Sensitivity Analysis](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/experiments/notebooks/summarized/vaccination_strategy-frontliners-infected-hesitancy.png?raw=true)
+![Sensitivity Analysis on Infected Agents](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/experiments/notebooks/summarized/summary/vaccination_strategy-frontliners-infected.png?raw=true)
 
-![Sensitivity Analysis](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/experiments/notebooks/summarized/vaccination_strategy-frontliners-died-hesitancy.png?raw=true)
+![Sensitivity Analysis on Died Agents](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/experiments/notebooks/summarized/summary/vaccination_strategy-frontliners-died.png?raw=true)
 
-![Sensitivity Analysis](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/experiments/notebooks/summarized/vaccination_strategy-frontliners-recovered-hesitancy.png?raw=true)
+![Sensitivity Analysis on Recovered Agents](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/experiments/notebooks/summarized/summary/vaccination_strategy-frontliners-recovered.png?raw=true)
+
+![Sensitivity Analysis on Vaccine Hesitancy effect on Infected Agents](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/experiments/notebooks/summarized/summary/vaccination_strategy-frontliners-infected-hesitancy.png?raw=true)
+
+![Sensitivity Analysis on Vaccine Hesitancy effect on Died Agents](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/experiments/notebooks/summarized/summary/vaccination_strategy-frontliners-died-hesitancy.png?raw=true)
+
+![Sensitivity Analysis on Vaccine Hesitancy effect on Recovered Agents](https://github.com/JomaMinoza/Bangsamoro-ABM-COVID19-Vaccine-Distribution-Optimization/blob/main/experiments/notebooks/summarized/summary/vaccination_strategy-frontliners-recovered-hesitancy.png?raw=true)
 
 
 #BARMMOpenData
-
 
