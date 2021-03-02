@@ -1,0 +1,68 @@
+
+-------------------------------------------------------------------------------------------------------
+
+---- Sensitivity Analysis on the Infected Agents ----
+Results showing percentage of infection reduction through different prioritization compared to no vaccination scenario
+
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers | 40.953
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers, Social Status | 41.086
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers, Economic Impact and Revenue Generating Factors | 39.806
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers, Elderly | 41.13
+Vaccine Distribution: Prioritization by All Factors | 42.233
+
+-------------------------------------------------------------------------------------------------------
+
+---- Sensitivity Analysis on the Died Agents ----
+Results showing percentage of mortality reduction through different prioritization compared to no vaccination scenario
+
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 62.775
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers, Social Status - 64.758
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers, Economic Impact and Revenue Generating Factors - 62.335
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers, Elderly - 63.656
+Vaccine Distribution: Prioritization by All Factors - 64.758
+
+-------------------------------------------------------------------------------------------------------
+
+---- Sensitivity Analysis on the Agents that were Protected ----
+Results showing percentage of protection* through different prioritization compared to no vaccination scenario
+
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers | 149.255
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers, Social Status | 150.128
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers, Economic Impact and Revenue Generating Factors | 148.638
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers, Elderly | 149.717
+Vaccine Distribution: Prioritization by All Factors | 151.31
+
+-------------------------------------------------------------------------------------------------------
+
+---- Sensitivity Analysis on the Vaccine Hesitancy ----
+Results showing percentage of infection reduction through different prioritization compared to no vaccination scenario
+
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 0% Vaccine Hesitancy | 40.953
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 25% Vaccine Hesitancy | 29.479
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 50% Vaccine Hesitancy | 20.388
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 75% Vaccine Hesitancy | 10.238
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 100% Vaccine Hesitancy | -0.265
+
+-------------------------------------------------------------------------------------------------------
+
+Results showing percentage of mortality reduction through different prioritization compared to no vaccination scenario
+
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 0% Vaccine Hesitancy | 62.775
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 25% Vaccine Hesitancy | 45.154
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 50% Vaccine Hesitancy | 30.837
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 75% Vaccine Hesitancy | 14.537
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 100% Vaccine Hesitancy | 0.661
+
+-------------------------------------------------------------------------------------------------------
+
+Results showing percentage of protection* through different prioritization compared to no vaccination scenario
+
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 0% Vaccine Hesitancy | 149.255
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 25% Vaccine Hesitancy | 135.483
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 50% Vaccine Hesitancy | 124.024
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 75% Vaccine Hesitancy | 111.691
+Vaccine Distribution: Prioritization by Frontliners and Essential Workers - 100% Vaccine Hesitancy | 100.206
+
+-------------------------------------------------------------------------------------------------------
+
+Note: * protection means making sure people to have immunity through vaccination and able to recovered
