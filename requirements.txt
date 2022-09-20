@@ -30,7 +30,7 @@ jupyter_contrib_nbextensions==0.5.1
 MarkupSafe==1.1.1
 mesa_geo==0.2.0
 mistune==0.8.4
-nbconvert==5.4.1
+nbconvert==6.5.1
 nbformat==4.4.0
 networkx==2.2
 numpy==1.22.0
